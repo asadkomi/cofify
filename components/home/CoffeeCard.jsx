@@ -1,4 +1,5 @@
 import React from "react";
+import Link from 'next/link'
 
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -9,30 +10,35 @@ import Typography from "@mui/material/Typography";
 
 import ImgHero3 from "../../public/assets/hero.svg";
 
-const CoffeeCard = () => {
+const CoffeeCard = ({coffee}) => {
   return (
-    <Card sx={{ width: "100%" }} color="transparent">
+    <Link href={`/product/${coffee._id}`} passHref>
+    <Card sx={{ width: "100%", cursor:'pointer' }} color="transparent">
       <CardMedia
         component="img"
         alt="Card"
         height="240"
-        image="https://colorpalettes.net/wp-content/uploads/2022/06/color-palette-4480.png"
+        image={coffee.img}
         sx={{}}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {coffee.title}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="div">
+          ${coffee.prices[0]}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {coffee.desc}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      {/* <CardActions>
+        
+        <Button variant="contained" size="small">Add to cart</Button>
+
+      </CardActions> */}
     </Card>
+        </Link>
   );
 };
 

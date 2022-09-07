@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material";
 import React from "react";
 import CoffeeCard from "./CoffeeCard.jsx";
 
-const CoffeeList = () => {
+const CoffeeList = ({coffeeList}) => {
   return (
     <>
       <Grid
@@ -56,7 +56,14 @@ const CoffeeList = () => {
           flexDirection: "row",
         }}
       >
-        <Grid item xs={12} sm={6} md={4} lg={3} sx={{}}>
+
+        {coffeeList.map((coffee) => (
+        <Grid key={coffee._id} item xs={12} sm={6} md={4} lg={3} sx={{}}>
+
+          <CoffeeCard  coffee={coffee}/>
+        </Grid>
+        ))}
+        {/* <Grid item xs={12} sm={6} md={4} lg={3} sx={{}}>
           <CoffeeCard />
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3} sx={{}}>
@@ -67,10 +74,7 @@ const CoffeeList = () => {
         </Grid>
         <Grid item xs={12} sm={6} md={4} lg={3} sx={{}}>
           <CoffeeCard />
-        </Grid>
-        <Grid item xs={12} sm={6} md={4} lg={3} sx={{}}>
-          <CoffeeCard />
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );

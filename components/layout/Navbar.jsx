@@ -15,6 +15,11 @@ import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 
+import Badge from '@mui/material/Badge';
+
+import { useSelector } from "react-redux";
+import Link from "next/link";
+
 const pages = [
   {
     id: 1,
@@ -39,6 +44,8 @@ const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const Navbar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const quantity = useSelector((state) => state.cart.quantity);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -159,12 +166,16 @@ const Navbar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
+          <Box sx={{ flexGrow: 0, display:'flex', alignItems:'center' }}>
+            <Link href={'/cart'} passHref>
+            <Box sx={{ color: "white", marginRight: "15px", marginTop:'10px', cursor:'pointer' }}>
+            <Badge badgeContent={quantity} color="secondary" >
+                 <ShoppingCartIcon />
+            </Badge>
+            </Box>
+            </Link>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <ShoppingCartIcon
-                  sx={{ color: "white", marginRight: "15px" }}
-                />
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>

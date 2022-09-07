@@ -2,7 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import Image from "next/image";
 
-const ProductImg = () => {
+const ProductImg = ({coffee}) => {
   return (
     <Box
       style={{
@@ -11,7 +11,7 @@ const ProductImg = () => {
         alignItems: "center",
       }}
     >
-      <Image src="/assets/hero.png" alt="product" width="500" height="500" />
+      <Image src={coffee.img} alt="product" width="500" height="500" />
     </Box>
   );
 };

@@ -1,12 +1,14 @@
 import { Grid, Box, Typography } from "@mui/material";
 import React from "react";
 import Image from "next/image";
+import axios from "axios";
+
 
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import ProductImg from "../../components/product/ProductImg.jsx";
 import ProductDetails from "../../components/product/ProductDetails";
 
-const Product = () => {
+const Product = ({coffee}) => {
   return (
     <Grid
       container
@@ -21,14 +23,31 @@ const Product = () => {
       }}
     >
       <Grid item xs={12} sm={6} sx={{}}>
-        <ProductImg />
+        <ProductImg coffee={coffee} />
       
       </Grid>
       <Grid item xs={12} sm={6}>
-        <ProductDetails />
+        <ProductDetails coffee={coffee}/>
       </Grid>
     </Grid>
   );
+};
+
+export const getServerSideProps = async ({params}) => {
+  // const myCookie = ctx.req?.cookies || "";
+  // let admin = false;
+
+  // if (myCookie.token === process.env.TOKEN) {
+  //   admin = true;
+  // }
+
+  const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+  return {
+    props: {
+      coffee: res.data,
+      // admin,
+    },
+  };
 };
 
 export default Product;

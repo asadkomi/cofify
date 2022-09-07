@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../StateManagement/cartSlice.js";
 
 import {
   Typography,
@@ -13,9 +15,18 @@ import {
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 
 
-const ProjectDetails = () => {
+const ProjectDetails = ({coffee}) => {
   const [size, setSize] = useState(0);
   const [cupSize, setCupSize] = useState("small");
+  const [price, setPrice] = useState(coffee.prices[0])
+  const [extras, setExtras] = useState([]);
+  const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const changePrice = (number) => {
+    setPrice(price + number);
+  };
 
   const handleChange = (event, newcupSize) => {
     setCupSize(newcupSize);
@@ -30,13 +41,28 @@ const ProjectDetails = () => {
     }
   };
 
-  const coffee = {
-    id: 1,
-    img: "",
-    title: "Coffinga",
-    price: [6.45, 7.99, 8.99],
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua Ut enim ad minim ut labore et dolore magna aliqua. Ut enim ad ut labore et dolore magna aliqua Ut enim ad",
+  const handleSize = (sizeIndex) => {
+    const difference = coffee.prices[sizeIndex] - coffee.prices[size];
+    setSize(sizeIndex);
+    changePrice(difference);
   };
+
+const handleChangeBox = (e, option) => {
+  const checked = e.target.checked ;
+
+  if (checked) {
+    changePrice(option.price);
+    setExtras((prev) => [...prev, option]);
+  } else {
+    changePrice(-option.price);
+    setExtras(extras.filter((extra) => extra._id !== option._id));
+  }
+}
+
+const handleClick = () => {
+  dispatch(addProduct({...coffee, extras, price, quantity}));
+};
+ 
 
   return (
     <Box
@@ -54,7 +80,7 @@ const ProjectDetails = () => {
         </Typography>
         <Typography pb={2}>{coffee.desc}</Typography>
         <Typography pb={2} variant="h6">
-          ${coffee.price[size]}
+          ${price}
         </Typography>
         <Typography pb={2} variant="h5" SX={{}}>
           Cup Size
@@ -78,6 +104,7 @@ const ProjectDetails = () => {
         >
           <ToggleButton
             value="small"
+            onClick={() => handleSize(0)}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -95,6 +122,7 @@ const ProjectDetails = () => {
           </ToggleButton>
           <ToggleButton
             value="medium"
+            onClick={() => handleSize(1)}
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -112,6 +140,8 @@ const ProjectDetails = () => {
           </ToggleButton>
           <ToggleButton
             value="large"
+            onClick={() => handleSize(2)}
+
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -139,32 +169,22 @@ const ProjectDetails = () => {
             marginTop: "30px",
           }}
         >
-          <FormControlLabel
+          {coffee.extraOptions.map((option)=> (
+
+          <FormControlLabel key={option._id}
             control={
               <Checkbox
                 sx={{ color: "white" }}
-                defaultChecked
+              
                 color="secondary"
+                onChange={(e) => handleChangeBox(e, option)}
               />
             }
-            label="Sugar"
+            label={option.text}
             sx={{}}
           />
-          <FormControlLabel
-            control={<Checkbox sx={{ color: "white" }} color="secondary" />}
-            label="Cream"
-            sx={{}}
-          />
-          <FormControlLabel
-            control={<Checkbox sx={{ color: "white" }} color="secondary" />}
-            label="Ginger"
-            sx={{}}
-          />
-          <FormControlLabel
-            control={<Checkbox sx={{ color: "white" }} color="secondary" />}
-            label="Cinnamon"
-            sx={{}}
-          />
+          ))}
+         
         </FormGroup>
       </Box>
 
@@ -181,6 +201,7 @@ const ProjectDetails = () => {
           <input
             type="number"
             defaultValue={1}
+            onChange={(e) => setQuantity(e.target.value)}
             style={{
               width: " 50px",
               height: "36px",
@@ -189,7 +210,7 @@ const ProjectDetails = () => {
               marginRight: "10px",
             }}
           />
-          <Button color="secondary" variant="contained" sx={{}}>
+          <Button color="secondary" variant="contained" sx={{}} onClick={handleClick}>
             Add to Cart
           </Button>
         </Box>
