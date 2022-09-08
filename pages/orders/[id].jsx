@@ -86,16 +86,7 @@ e"
           </Table>
         </TableContainer>
         
-          {/* <Box sx={{}}>
-            <PaymentIcon sx={{fontSize: '140px'}} />
-            <Typography sx={{alignText: 'center'}}> Payment </Typography>
-            <CheckCircleIcon />
-          </Box>
-          <Box sx={{dispaly:'flex', justifyContent: 'center', alignItems: 'center', alignText: 'center'}}>
-            <PaymentIcon sx={{fontSize: '140px'}} />
-            <Typography sx={{alignText: 'center'}}> Payment </Typography>
-            <CheckCircleIcon />
-          </Box> */}
+          
 
           <OrderStatus order={order} status={status} />
         
