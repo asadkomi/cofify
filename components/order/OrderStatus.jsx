@@ -14,9 +14,9 @@ import DoorbellIcon from '@mui/icons-material/Doorbell';
 import styles from '../../styles/Order.module.css'
 
 
-const OrderStatus = () => {
+const OrderStatus = ({order , status}) => {
 
-  const status = 0;
+  // const status = 0;
   const statusClass = (index) => {
     if(index - status < 1) return styles.done;
     if(index - status === 1) return styles.inProgress;

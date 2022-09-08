@@ -34,6 +34,7 @@ const Hero = () => {
         animation="fade"
         sx={{
           // marginBottom: "20px",
+          // display:{xs:'none'} ,
           width: '100%'
         }}
       >

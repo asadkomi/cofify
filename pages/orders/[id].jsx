@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import {
   Grid,
   Table,
@@ -20,7 +21,9 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import OrderStatus from "../../components/order/OrderStatus";
 
 
-const Order = () => {
+const Order = ({order}) => {
+
+  const status = order.status;
   return (
     <Grid
       container
@@ -67,16 +70,16 @@ e"
                   component="th"
                   scope="row"
                 >
-                  127384
+                  {order._id}
                 </TableCell>
                 <TableCell sx={{ textAlign: "start" }} align="right">
-                  Coffinga
+                  {order.customer}
                 </TableCell>
                 <TableCell sx={{ textAlign: "start" }} align="right">
-                  124 N Hyland Ave, Unit 205
+                {order.address}
                 </TableCell>
                 <TableCell sx={{ textAlign: "start" }} align="right">
-                  $8.99
+                  ${order.total}
                 </TableCell>
               </TableRow>
             </TableBody>
@@ -94,7 +97,7 @@ e"
             <CheckCircleIcon />
           </Box> */}
 
-          <OrderStatus />
+          <OrderStatus order={order} status={status} />
         
       </Grid>
 
@@ -112,10 +115,10 @@ e"
               Cart Total
             </Typography>
             <Typography variant="body2" sx={{}}>
-              Subtotal: $17.98
+              Subtotal: ${order.total}
             </Typography>
             <Typography variant="body2">Discount: $0.00</Typography>
-            <Typography variant="body2">Total: $0.00</Typography>
+            <Typography variant="body2">Total: ${order.total}</Typography>
           </CardContent>
           <CardActions>
             <Button variant="contained" fullWidth color="success" size="large">
@@ -126,6 +129,13 @@ e"
       </Grid>
     </Grid>
   );
+};
+
+export const getServerSideProps = async ({ params }) => {
+  const res = await axios.get(`http://localhost:3000/api/orders/${params.id}`);
+  return {
+    props: { order: res.data },
+  };
 };
 
 export default Order;
