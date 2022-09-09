@@ -6,7 +6,7 @@ import HomeSection from "../components/home/HomeSection.jsx";
 
 import axios from "axios";
 
-export default function Home({coffeeList}) {
+export default function Home({coffeeList, admin}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -24,18 +24,18 @@ export default function Home({coffeeList}) {
 
 
 export const getServerSideProps = async (ctx) => {
-  // const myCookie = ctx.req?.cookies || "";
-  // let admin = false;
+  const myCookie = ctx.req?.cookies || "";
+  let admin = false;
 
-  // if (myCookie.token === process.env.TOKEN) {
-  //   admin = true;
-  // }
+  if (myCookie.token === process.env.TOKEN) {
+    admin = true;
+  }
 
   const res = await axios.get("http://localhost:3000/api/products");
   return {
     props: {
       coffeeList: res.data,
-      // admin,
+      admin,
     },
   };
 };

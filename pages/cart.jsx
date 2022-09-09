@@ -29,7 +29,7 @@ import {
 import axios from "axios";
 import { useRouter } from "next/router";
 import { reset } from "../StateManagement/cartSlice.js";
-import OrdaerModal from "../components/cart/OrdaerModal.jsx";
+import OrderModal from "../components/cart/OrderModal.jsx";
 
 
 const styles = {
@@ -252,7 +252,7 @@ const cart = () => {
       </Grid>
     </Grid>
     <div>
-      {cash && <OrdaerModal handleOpen={handleOpen} handleClose={handleClose} total={cart.total} createOrder={createOrder} /> }
+      {cash && <OrderModal handleOpen={handleOpen} handleClose={handleClose} total={cart.total} createOrder={createOrder} /> }
     </div>
     </>
   );

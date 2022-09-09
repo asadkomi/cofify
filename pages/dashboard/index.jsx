@@ -18,14 +18,22 @@ import {
     Button,
     Typography,
     Box,
-    Modal
+    Modal,
+    Fab
   } from "@mui/material";
+import ActionButton from '../../components/dashboard/ActionButton.jsx';
+import AddModal from '../../components/dashboard/AddModal.jsx';
+import AddIcon from '@mui/icons-material/Add';
 
 const index = ({orders, products}) => {
+    const [open, setOpen] = useState(false);
 
     const [coffeeList, setCoffeeList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
   const status = ["Preparing", "On the way", "Delivered"];
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
 
 const handleDelete = async (id) => {
@@ -58,7 +66,25 @@ const handleStatus = async (id) => {
   };
 
   return (
+
+    <>
+    
     <Grid container spacing={2}  sx={{backgroundColor: '#432d2d',padding: {xs: '100px 20px', sm:'150px 25px',}}}>
+        <Grid container spacing={2}>
+        <Grid item xs={12} sx={{paddingLeft:'10px'}}>
+            
+        <Box sx={{ '& > :not(style)': { m: 1 }, paddingLeft:'10px', display:'flex', alignItems:'center' }}> 
+            <Fab onClick={() => setOpen(true)} color="secondary" aria-label="add">
+                 <AddIcon /> 
+            </Fab>
+            <Typography color='white'>
+
+                Add Coffee
+            </Typography>
+        </Box>
+            </Grid>
+        </Grid>
+        
         <Grid item xs={12} sm={6} >
         <TableContainer
           component={Paper}
@@ -201,12 +227,25 @@ e"
 
         </Grid>
     </Grid>
+        <div>
+        {open && <AddModal setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} /> }
+        </div>
+    </>
   )
 }
 
 export const getServerSideProps = async (ctx) => {
     
-  
+    const myCookie = ctx.req?.cookies || "";
+
+    if (myCookie.token !== process.env.TOKEN) {
+      return {
+        redirect: {
+          destination: "/dashboard/Login",
+          permanent: false,
+        },
+      };
+    }
     
   
     const productRes = await axios.get("http://localhost:3000/api/products");

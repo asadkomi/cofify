@@ -7,28 +7,31 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 import ImgHero3 from "../../public/assets/hero.svg";
 
 const CoffeeCard = ({coffee}) => {
   return (
     <Link href={`/product/${coffee._id}`} passHref>
-    <Card sx={{ width: "100%", cursor:'pointer' }} color="transparent">
+    <Box sx={{ width: "100%", cursor:'pointer', backgroundColor:'transparent' }} color="transparent">
       <CardMedia
         component="img"
         alt="Card"
-        height="240"
+        width='100'
+        height="400"
+        
         image={coffee.img}
         sx={{}}
       />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+      <CardContent sx={{textAlign:'center'}}>
+        <Typography color="white" gutterBottom variant="h5" component="div">
           {coffee.title}
         </Typography>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography color="white" gutterBottom variant="h5" component="div">
           ${coffee.prices[0]}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography  variant="body2" color="white">
           {coffee.desc}
         </Typography>
       </CardContent>
@@ -37,7 +40,7 @@ const CoffeeCard = ({coffee}) => {
         <Button variant="contained" size="small">Add to cart</Button>
 
       </CardActions> */}
-    </Card>
+    </Box>
         </Link>
   );
 };

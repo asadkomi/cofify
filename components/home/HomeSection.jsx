@@ -10,7 +10,7 @@ const Home = ({coffeeList}) => {
         <Hero />
       
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} height='100vh'>
         <CoffeeList coffeeList={coffeeList} />
       </Grid>
     </Grid>
