@@ -2,40 +2,59 @@ import React from "react";
 import Carousel from "react-material-ui-carousel";
 import NextLink from "next/link";
 import Image from "next/image";
-import { Grid, Link } from "@mui/material";
+import { Grid, Link, Box } from "@mui/material";
 
-import ImgHero from "../../public/assets/hero3.svg";
-import ImgHero2 from "../../public/assets/hero.svg";
-import ImgHero3 from "../../public/assets/hero2.svg";
+import one from "../../public/assets/h1.svg";
+import two from "../../public/assets/h2.svg";
+import three from "../../public/assets/h3.svg";
+import four from "../../public/assets/h4.svg";
+import five from "../../public/assets/h5.svg";
+import six from "../../public/assets/h6.svg";
 
 const featureImages = [
   {
     id: 1,
     // title: 'Image One',
-    image: ImgHero,
+    image: one,
   },
   {
     id: 2,
     // title: 'Image One',
-    image: ImgHero2,
+    image: two,
   },
   {
     id: 3,
     // title: 'Image One',
-    image: ImgHero3,
+    image: three,
+  },
+  {
+    id: 4,
+    // title: 'Image One',
+    image: four,
+  },
+  {
+    id: 5,
+    // title: 'Image One',
+    image: five,
+  },
+  {
+    id: 6,
+    // title: 'Image One',
+    image: six,
   },
 ];
 
 const Hero = () => {
   return (
-    <>
+    <Box sx={{width:'100%', display:{xs:'none', sm:'flex'}}}>
       <Carousel
         autoPlay={true}
         animation="fade"
         sx={{
           // marginBottom: "20px",
           // display:{xs:'none'} ,
-          width: '100%'
+          width: '100%',
+          backgroundColor: "#432d2d"
         }}
       >
         {featureImages.map((item) => (
@@ -53,7 +72,7 @@ const Hero = () => {
           </NextLink>
         ))}
       </Carousel>
-    </>
+    </Box>
   );
 };
 

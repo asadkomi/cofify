@@ -19,7 +19,8 @@ const Product = ({coffee}) => {
         alignItems: "center",
         backgroundColor: "#432d2d",
         color: "white",
-        height:{sm:'100vh'}
+        // height:{sm:'100vh'}
+        padding: {sm:'200px 30px'},
       }}
     >
       <Grid item xs={12} sm={6} sx={{}}>

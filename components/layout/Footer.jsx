@@ -1,6 +1,7 @@
 import React from "react";
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid, Typography, Box } from "@mui/material";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -8,7 +9,7 @@ const Footer = () => {
       container
       spacing={0}
       // height="300px"
-      sx={{ backgroundColor: "#432d2d", color: "white", padding: "30px 30px", borderTop: '1px solid #fff' }}
+      sx={{ backgroundColor: "#432d2d", color: "white", padding: "30px 30px", borderTop: '1px solid #f1f1f1' }}
     >
       
 <Grid item xs={12} sm={6} md={4} lg={3}  sx={{ 
@@ -16,12 +17,11 @@ const Footer = () => {
                alignItems: 'center',
                p: '30px 0'
            }}>
-      <LocalCafeIcon
-            sx={{ 
-               mr: 1, color: "white",
-               fontSize: '40px'
-           }}
-          />
+
+          <Box sx={{marginBottom:'7px', marginRight:'5px' }}>
+
+              <Image src='/assets/logo2.svg' alt="product" width="50" height="50"  />
+          </Box>
           <Typography
             variant="h4"
             noWrap
@@ -36,30 +36,29 @@ const Footer = () => {
               textDecoration: "none",
             }}
           >
-            COFIFY
+            COFFIFY
             </Typography>
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3} sx={{p:'10px 0'}}>
-        <Typography>Menu One</Typography>
-        <Typography>Menu One</Typography>
-        <Typography>Menu One</Typography>
-        <Typography>Menu One</Typography>
-        <Typography>Menu One</Typography>
+        <Typography fontWeight='bold' variant='h6' sx={{marginBottom:'20px'}}>Quick Links</Typography>
+        <Typography>Home</Typography>
+        <Typography>Menu</Typography>
+        <Typography>About</Typography>
+        
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3} sx={{p:'10px 0'}}>
-        <Typography>Menu Two</Typography>
-        <Typography>Menu Two</Typography>
-        <Typography>Menu Two</Typography>
-        <Typography>Menu Two</Typography>
-        <Typography>Menu Two</Typography>
+      <Typography fontWeight='bold' variant='h6' sx={{marginBottom:'20px'}}>Information</Typography>
+        <Typography>FAQ</Typography>
+        <Typography>Help Center</Typography>
+        <Typography>Track Order</Typography>
+        
       </Grid>
       <Grid item xs={12} sm={6} md={4} lg={3} sx={{p:'10px 0'}}>
-        <Typography>Menu Three</Typography>
-        <Typography>Menu Three</Typography>
-        <Typography>Menu Three</Typography>
-        <Typography>Menu Three</Typography>
-        <Typography>Menu Three</Typography>
-        <Typography>Menu Three</Typography>
+      <Typography fontWeight='bold' variant='h6' sx={{marginBottom:'20px'}}>Polices</Typography>
+        <Typography>Return policy</Typography>
+        <Typography>Shipping policy</Typography>
+        <Typography>Terms of service</Typography>
+       
       </Grid>
     </Grid>
   );

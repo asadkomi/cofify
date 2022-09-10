@@ -27,14 +27,14 @@ const CoffeeList = ({coffeeList}) => {
         >
           <Typography
 
-            sx={{textTransform: 'uppercase', textAlign: "center", padding: "20px 0px",fontWeight: 'bold', fontSize: {xs:'18px', sm: '46px'}, marginTop: {xs: '20px'} }}
+            sx={{textTransform: 'uppercase', textAlign: "center", padding: "20px 0px",fontWeight: 'bold', fontSize: {xs:'18px', sm: '26px', md:'30px'}, marginTop: {xs: '20px'} }}
           >
             Try our delicious coffee today <br /> and taste the difference.
           </Typography>
           <Typography
             maxWidth="600px"
             variant="h5"
-            sx={{ textAlign: "center", padding: {xs:"0 20px", sm:"30px 20px"}, fontSize: {xs:'14px', sm: '24px'}, color:'gray' }}
+            sx={{ textAlign: "center", padding: {xs:"0 20px", sm:"20px 20px"}, fontSize: {xs:'14px', sm: '18px'}, color:'gray' }}
           >
             Coffify is a specialty coffee shop that delivers fresh, great-tasting coffee right to you.
             We offer the freshest, most aromatic smelling coffee at a fraction of what you’ve been paying.
@@ -46,7 +46,7 @@ const CoffeeList = ({coffeeList}) => {
       <Grid
         container
         spacing={2}
-        padding="40px 30px"
+        padding="100px 30px"
         sx={{
           display: "flex",
           backgroundColor: "#432d2d",

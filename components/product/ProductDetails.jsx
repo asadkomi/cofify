@@ -78,7 +78,7 @@ const handleClick = () => {
         <Typography pb={2} variant="h3">
           {coffee.title}
         </Typography>
-        <Typography pb={2}>{coffee.desc}</Typography>
+        <Typography pb={2} sx={{paddingRight:'20px'}}>{coffee.desc}</Typography>
         <Typography pb={2} variant="h6">
           ${price}
         </Typography>

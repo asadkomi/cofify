@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
+import Image from "next/image";
 
 import Badge from '@mui/material/Badge';
 
@@ -77,9 +78,13 @@ const Navbar = () => {
     >
       <Container maxWidth="xl">
         <Toolbar disableGutters sx={{}}>
-          <LocalCafeIcon
+          {/* <LocalCafeIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "white" }}
-          />
+          /> */}
+          <Box sx={{marginBottom:'7px', marginRight:'5px', display: { xs: "none", md: "flex" }}}>
+
+          <Image src='/assets/logo2.svg' alt="product" width="30" height="30"  />
+          </Box>
           <Typography
             variant="h6"
             noWrap
@@ -95,7 +100,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            COFIFY
+            COFFIFY
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -134,7 +139,11 @@ const Navbar = () => {
               ))}
             </Menu>
           </Box>
-          <LocalCafeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          {/* <LocalCafeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
+          <Box sx={{marginBottom:'7px', marginRight:'5px',display: { xs: "flex", md: "none" } }}>
+
+          <Image src='/assets/logo2.svg' alt="product" width="30" height="30"  />
+          </Box>
           <Typography
             variant="h5"
             noWrap
@@ -151,7 +160,7 @@ const Navbar = () => {
               textDecoration: "none",
             }}
           >
-            COFIFY
+            COFFIFY
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -168,17 +177,17 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 0, display:'flex', alignItems:'center' }}>
             <Link href={'/cart'} passHref>
-            <Box sx={{ color: "white", marginRight: "15px", marginTop:'10px', cursor:'pointer' }}>
-            <Badge badgeContent={quantity} color="secondary" >
-                 <ShoppingCartIcon />
-            </Badge>
+            <Box sx={{ color: "white", marginRight: "15px",  cursor:'pointer' }}>
+              <Badge badgeContent={quantity} color="secondary" >
+                  <ShoppingCartIcon />
+              </Badge>
             </Box>
             </Link>
-            <Tooltip title="Open settings">
+            {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
