@@ -198,7 +198,7 @@ const handleClick = () => {
         }}
       >
         <Box sx={{}}>
-          <input
+          {/* <input
             type="number"
             defaultValue={1}
             onChange={(e) => setQuantity(e.target.value)}
@@ -209,7 +209,7 @@ const handleClick = () => {
               border: "none",
               marginRight: "10px",
             }}
-          />
+          /> */}
           <Button color="secondary" variant="contained" sx={{}} onClick={handleClick}>
             Add to Cart
           </Button>

@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
-import ImgHero3 from "../../public/assets/hero.svg";
+
 
 const CoffeeCard = ({coffee}) => {
   return (
