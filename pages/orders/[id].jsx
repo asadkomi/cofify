@@ -16,21 +16,21 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import PaymentIcon from '@mui/icons-material/Payment';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import OrderStatus from "../../components/order/OrderStatus";
 
-
-const Order = ({order}) => {
-
+const Order = ({ order }) => {
   const status = order.status;
   return (
     <Grid
       container
       spacing={1}
-      sx={{ backgroundColor: "#432d2d", padding: { xs: "20px", sm: "40px" }, height:{sm:'100vh'} }}
+      sx={{
+        backgroundColor: "#432d2d",
+        padding: { xs: "20px", sm: "40px" },
+        height: { sm: "100vh" },
+      }}
     >
-      <Grid item xs={12} sm={9} sx={{margin: {xs: '20px 0', sm:'40px 0'}}}>
+      <Grid item xs={12} sm={9} sx={{ margin: { xs: "20px 0", sm: "40px 0" } }}>
         <TableContainer
           component={Paper}
           sx={{ color: "white !important", textAlign: "center" }}
@@ -76,7 +76,7 @@ e"
                   {order.customer}
                 </TableCell>
                 <TableCell sx={{ textAlign: "start" }} align="right">
-                {order.address}
+                  {order.address}
                 </TableCell>
                 <TableCell sx={{ textAlign: "start" }} align="right">
                   ${order.total}
@@ -85,14 +85,11 @@ e"
             </TableBody>
           </Table>
         </TableContainer>
-        
-          
 
-          <OrderStatus order={order} status={status} />
-        
+        <OrderStatus order={order} status={status} />
       </Grid>
 
-      <Grid item xs={12} sm={3} sx={{margin: {sm:'40px 0'}}}>
+      <Grid item xs={12} sm={3} sx={{ margin: { sm: "40px 0" } }}>
         <Card
           sx={{
             display: "flex",

@@ -1,17 +1,15 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
+// const dbConnect = () => {
+//     if(mongoose.connection.readyState >= 1) {
+//         return
+//     }
 
-const dbConnect = () => {
-    if(mongoose.connection.readyState >= 1) {
-        return
-    }
+//     mongoose.connect(process.env.DB_LOCAL_URI, {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
 
-    mongoose.connect(process.env.DB_LOCAL_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
+//     }).then(con => console.log('Connected to atlas'))
+// }
 
-
-    }).then(con => console.log('Connected to atlas'))
-}
-
-export default dbConnect
+// export default dbConnect

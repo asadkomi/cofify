@@ -16,7 +16,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import Image from "next/image";
 
-import Badge from '@mui/material/Badge';
+import Badge from "@mui/material/Badge";
 
 import { useSelector } from "react-redux";
 import Link from "next/link";
@@ -67,12 +67,11 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       elevation={0}
-      sx={{ textTransform: 'none'}}
+      sx={{ textTransform: "none" }}
       style={
         {
           // backdropFilter: "blur(5px)",
           // backgroundColor: "rgba(67,45,45, 0.5)",
-          
         }
       }
     >
@@ -81,9 +80,19 @@ const Navbar = () => {
           {/* <LocalCafeIcon
             sx={{ display: { xs: "none", md: "flex" }, mr: 1, color: "white" }}
           /> */}
-          <Box sx={{marginBottom:'7px', marginRight:'5px', display: { xs: "none", md: "flex" }}}>
-
-          <Image src='/assets/logo2.svg' alt="product" width="30" height="30"  />
+          <Box
+            sx={{
+              marginBottom: "7px",
+              marginRight: "5px",
+              display: { xs: "none", md: "flex" },
+            }}
+          >
+            <Image
+              src="/assets/logo2.svg"
+              alt="product"
+              width="30"
+              height="30"
+            />
           </Box>
           <Typography
             variant="h6"
@@ -140,9 +149,19 @@ const Navbar = () => {
             </Menu>
           </Box>
           {/* <LocalCafeIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-          <Box sx={{marginBottom:'7px', marginRight:'5px',display: { xs: "flex", md: "none" } }}>
-
-          <Image src='/assets/logo2.svg' alt="product" width="30" height="30"  />
+          <Box
+            sx={{
+              marginBottom: "7px",
+              marginRight: "5px",
+              display: { xs: "flex", md: "none" },
+            }}
+          >
+            <Image
+              src="/assets/logo2.svg"
+              alt="product"
+              width="30"
+              height="30"
+            />
           </Box>
           <Typography
             variant="h5"
@@ -175,13 +194,15 @@ const Navbar = () => {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0, display:'flex', alignItems:'center' }}>
-            <Link href={'/cart'} passHref>
-            <Box sx={{ color: "white", marginRight: "15px",  cursor:'pointer' }}>
-              <Badge badgeContent={quantity} color="secondary" >
+          <Box sx={{ flexGrow: 0, display: "flex", alignItems: "center" }}>
+            <Link href={"/cart"} passHref>
+              <Box
+                sx={{ color: "white", marginRight: "15px", cursor: "pointer" }}
+              >
+                <Badge badgeContent={quantity} color="secondary">
                   <ShoppingCartIcon />
-              </Badge>
-            </Box>
+                </Badge>
+              </Box>
             </Link>
             {/* <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

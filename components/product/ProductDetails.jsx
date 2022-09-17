@@ -14,11 +14,10 @@ import {
 } from "@mui/material";
 import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 
-
-const ProjectDetails = ({coffee}) => {
+const ProjectDetails = ({ coffee }) => {
   const [size, setSize] = useState(0);
   const [cupSize, setCupSize] = useState("small");
-  const [price, setPrice] = useState(coffee.prices[0])
+  const [price, setPrice] = useState(coffee.prices[0]);
   const [extras, setExtras] = useState([]);
   const [quantity, setQuantity] = useState(1);
 
@@ -47,22 +46,21 @@ const ProjectDetails = ({coffee}) => {
     changePrice(difference);
   };
 
-const handleChangeBox = (e, option) => {
-  const checked = e.target.checked ;
+  const handleChangeBox = (e, option) => {
+    const checked = e.target.checked;
 
-  if (checked) {
-    changePrice(option.price);
-    setExtras((prev) => [...prev, option]);
-  } else {
-    changePrice(-option.price);
-    setExtras(extras.filter((extra) => extra._id !== option._id));
-  }
-}
+    if (checked) {
+      changePrice(option.price);
+      setExtras((prev) => [...prev, option]);
+    } else {
+      changePrice(-option.price);
+      setExtras(extras.filter((extra) => extra._id !== option._id));
+    }
+  };
 
-const handleClick = () => {
-  dispatch(addProduct({...coffee, extras, price, quantity}));
-};
- 
+  const handleClick = () => {
+    dispatch(addProduct({ ...coffee, extras, price, quantity }));
+  };
 
   return (
     <Box
@@ -78,7 +76,9 @@ const handleClick = () => {
         <Typography pb={2} variant="h3">
           {coffee.title}
         </Typography>
-        <Typography pb={2} sx={{paddingRight:'20px'}}>{coffee.desc}</Typography>
+        <Typography pb={2} sx={{ paddingRight: "20px" }}>
+          {coffee.desc}
+        </Typography>
         <Typography pb={2} variant="h6">
           ${price}
         </Typography>
@@ -141,7 +141,6 @@ const handleClick = () => {
           <ToggleButton
             value="large"
             onClick={() => handleSize(2)}
-
             sx={{
               display: "flex",
               flexDirection: "column",
@@ -169,22 +168,20 @@ const handleClick = () => {
             marginTop: "30px",
           }}
         >
-          {coffee.extraOptions.map((option)=> (
-
-          <FormControlLabel key={option._id}
-            control={
-              <Checkbox
-                sx={{ color: "white" }}
-              
-                color="secondary"
-                onChange={(e) => handleChangeBox(e, option)}
-              />
-            }
-            label={option.text}
-            sx={{}}
-          />
+          {coffee.extraOptions.map((option) => (
+            <FormControlLabel
+              key={option._id}
+              control={
+                <Checkbox
+                  sx={{ color: "white" }}
+                  color="secondary"
+                  onChange={(e) => handleChangeBox(e, option)}
+                />
+              }
+              label={option.text}
+              sx={{}}
+            />
           ))}
-         
         </FormGroup>
       </Box>
 
@@ -210,7 +207,12 @@ const handleClick = () => {
               marginRight: "10px",
             }}
           /> */}
-          <Button color="secondary" variant="contained" sx={{}} onClick={handleClick}>
+          <Button
+            color="secondary"
+            variant="contained"
+            sx={{}}
+            onClick={handleClick}
+          >
             Add to Cart
           </Button>
         </Box>

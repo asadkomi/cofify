@@ -1,12 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import Hero from "../components/hero/Hero.jsx";
 import HomeSection from "../components/home/HomeSection.jsx";
 
 import axios from "axios";
 
-export default function Home({coffeeList, admin}) {
+export default function Home({ coffeeList, admin }) {
+  console.log(coffeeList);
   return (
     <div className={styles.container}>
       <Head>
@@ -17,11 +16,10 @@ export default function Home({coffeeList, admin}) {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <HomeSection coffeeList={coffeeList}/>
+      <HomeSection coffeeList={coffeeList} />
     </div>
   );
 }
-
 
 export const getServerSideProps = async (ctx) => {
   const myCookie = ctx.req?.cookies || "";

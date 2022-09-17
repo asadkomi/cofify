@@ -1,14 +1,11 @@
 import { Grid, Box, Typography } from "@mui/material";
 import React from "react";
-import Image from "next/image";
 import axios from "axios";
 
-
-import FreeBreakfastIcon from "@mui/icons-material/FreeBreakfast";
 import ProductImg from "../../components/product/ProductImg.jsx";
 import ProductDetails from "../../components/product/ProductDetails";
 
-const Product = ({coffee}) => {
+const Product = ({ coffee }) => {
   return (
     <Grid
       container
@@ -20,21 +17,20 @@ const Product = ({coffee}) => {
         backgroundColor: "#432d2d",
         color: "white",
         // height:{sm:'100vh'}
-        padding: {sm:'200px 30px'},
+        padding: { sm: "200px 30px" },
       }}
     >
       <Grid item xs={12} sm={6} sx={{}}>
         <ProductImg coffee={coffee} />
-      
       </Grid>
       <Grid item xs={12} sm={6}>
-        <ProductDetails coffee={coffee}/>
+        <ProductDetails coffee={coffee} />
       </Grid>
     </Grid>
   );
 };
 
-export const getServerSideProps = async ({params}) => {
+export const getServerSideProps = async ({ params }) => {
   // const myCookie = ctx.req?.cookies || "";
   // let admin = false;
 
@@ -42,7 +38,9 @@ export const getServerSideProps = async ({params}) => {
   //   admin = true;
   // }
 
-  const res = await axios.get(`http://localhost:3000/api/products/${params.id}`);
+  const res = await axios.get(
+    `http://localhost:3000/api/products/${params.id}`
+  );
   return {
     props: {
       coffee: res.data,
